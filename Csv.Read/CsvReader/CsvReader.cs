@@ -8,25 +8,23 @@ using System.Threading.Tasks;
 
 namespace Csv.Read.CsvReader
 {
-    public class CsvReader : ICsvReader
+    public class CsvReader 
     {
         private readonly List<CsvRow> _Rows;
-        private readonly ICsvProvider _Provider;
+        private readonly ICsvInputProvider _Provider;
 
-        public CsvReader(ICsvProvider provider)
+        public CsvReader(ICsvInputProvider provider)
         {
             this._Rows = new List<CsvRow>();
             this._Provider = provider;
         }
-
         
-
-        public static CsvReader Create(ICsvProvider read)
+        public static CsvReader Create(ICsvInputProvider read)
         {
             return new CsvReader(read);
         }
 
-        public static CsvReader Create(FileCsvProvider fileProvider)
+        public static CsvReader Create(FileCsvInputProvider fileProvider)
         {
             return new CsvReader(fileProvider);
         }

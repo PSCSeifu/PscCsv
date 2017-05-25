@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Csv.IO.CsvRead
 {
-    public class FileCsvProvider : ICsvProvider
+    public class FileCsvInputProvider : ICsvInputProvider
     {
         private readonly string _FileName;
 
-        public FileCsvProvider(string filename)
+        public FileCsvInputProvider(string filename)
         {
             this._FileName = filename;
         }

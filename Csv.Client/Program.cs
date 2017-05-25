@@ -1,6 +1,9 @@
 ﻿using Csv.IO.CsvRead;
+using Csv.IO.CsvWrite;
 using Csv.Read.CsvReader;
 using Csv.Types;
+using Csv.Types.Write;
+using Csv.Write.CsvWriter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +16,15 @@ namespace Csv.Client
     {
         static void Main(string[] args)
         {
-            Read();
+            //Read();
+            Write();
             Console.WriteLine("--Done--");
             Console.ReadLine();
         }
 
         private static void Read()
         {
-           var provider = new FileCsvProvider(@"C:\Projects\PSC\Data0.csv");
+           var provider = new FileCsvInputProvider(@"C:\Projects\PSC\Data0.csv");
 
             CsvReader reader = CsvReader.Create(provider);
 
@@ -38,5 +42,28 @@ namespace Csv.Client
             
         }
 
+        public static void Write()
+        {
+            var provider = new FileCsvOutputProvider(@"C:\Projects\PSC\DataC4.csv");
+
+            CsvWriter writer = CsvWriter.Create(provider);
+
+            CsvRow headerRow = writer.NewRow();
+            headerRow.AddCol("Header1");
+            headerRow.AddCol("Header2");
+            headerRow.AddCol("Header3");
+
+            for (int i = 0; i < 10; i++)
+            {
+                CsvRow dataRow = writer.NewRow();
+                dataRow.AddCol($"first{i}");
+                dataRow.AddCol($"second{i}");
+                dataRow.AddCol($"third{i}");
+            }
+
+            writer.Write();
+        }
+
+       
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Csv.IO.CsvRead
 {
-    public interface ICsvProvider
+    public interface ICsvInputProvider
     {
         List<string> Read();
     }

@@ -62,6 +62,10 @@
       <Project>{b5a18015-cf6c-4941-be0a-d7959c9678b6}</Project>
       <Name>Csv.Types</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Csv.Write\Csv.Write.csproj">
+      <Project>{1F047310-FB44-4120-B010-2B4692EF6496}</Project>
+      <Name>Csv.Write</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

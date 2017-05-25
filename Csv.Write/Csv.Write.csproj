@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvWriter\CsvWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Csv.IO\Csv.IO.csproj">
+      <Project>{9754d056-e1d9-42e7-91de-2625ecec8d37}</Project>
+      <Name>Csv.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Csv.Types\Csv.Types.csproj">
+      <Project>{b5a18015-cf6c-4941-be0a-d7959c9678b6}</Project>
+      <Name>Csv.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

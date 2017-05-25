@@ -40,14 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvLine.cs" />
-    <Compile Include="CsvRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Read\CsvCol.cs" />
     <Compile Include="Read\CsvRow.cs" />
+    <Compile Include="Write\CsvRow.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Write\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
