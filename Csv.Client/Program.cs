@@ -24,7 +24,7 @@ namespace Csv.Client
 
             CsvReader reader = CsvReader.Create(provider);
 
-            reader.Read();
+            reader.Read(); 
 
            
             foreach (var row in reader.GetRows())
