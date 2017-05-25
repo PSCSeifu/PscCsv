@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F047310-FB44-4120-B010-2B4692EF6496}</ProjectGuid>
+    <ProjectGuid>{B78AF9F1-B9EF-490B-862C-F4C8E7DB5B0A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Csv.Write</RootNamespace>
-    <AssemblyName>Csv.Write</AssemblyName>
+    <RootNamespace>Csv.Read</RootNamespace>
+    <AssemblyName>Csv.Read</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvReader\CsvReader.cs" />
+    <Compile Include="CsvReader\ICsvReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Csv.IO\Csv.IO.csproj">
+      <Project>{9754D056-E1D9-42E7-91DE-2625ECEC8D37}</Project>
+      <Name>Csv.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Csv.Types\Csv.Types.csproj">
+      <Project>{B5A18015-CF6C-4941-BE0A-D7959C9678B6}</Project>
+      <Name>Csv.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F047310-FB44-4120-B010-2B4692EF6496}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Csv.Write</RootNamespace>
-    <AssemblyName>Csv.Write</AssemblyName>
+    <ProjectGuid>{7D9C2297-65B8-4651-BC73-9F719D26A3D9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Csv.Client</RootNamespace>
+    <AssemblyName>Csv.Client</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,7 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Csv.IO\Csv.IO.csproj">
+      <Project>{9754d056-e1d9-42e7-91de-2625ecec8d37}</Project>
+      <Name>Csv.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Csv.Read\Csv.Read.csproj">
+      <Project>{b78af9f1-b9ef-490b-862c-f4c8e7db5b0a}</Project>
+      <Name>Csv.Read</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Csv.Types\Csv.Types.csproj">
+      <Project>{b5a18015-cf6c-4941-be0a-d7959c9678b6}</Project>
+      <Name>Csv.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

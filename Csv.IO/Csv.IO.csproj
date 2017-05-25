@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F047310-FB44-4120-B010-2B4692EF6496}</ProjectGuid>
+    <ProjectGuid>{9754D056-E1D9-42E7-91DE-2625ECEC8D37}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Csv.Write</RootNamespace>
-    <AssemblyName>Csv.Write</AssemblyName>
+    <RootNamespace>Csv.IO</RootNamespace>
+    <AssemblyName>Csv.IO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvRead\FileCsvProvider.cs" />
+    <Compile Include="CsvRead\ICsvProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
