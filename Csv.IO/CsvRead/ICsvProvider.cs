@@ -8,6 +8,6 @@ namespace Csv.IO.CsvRead
 {
     public interface ICsvProvider
     {
-        string Read();
+        List<string> Read();
     }
 }

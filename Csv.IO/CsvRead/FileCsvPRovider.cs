@@ -15,18 +15,19 @@ namespace Csv.IO.CsvRead
         {
             this._FileName = filename;
         }
+        
 
-        public string Read()
+        public List<string> Read()
         {
-            string data = "";
+            List<string> csvLines = new List<string>();
             using (StreamReader sr = new StreamReader(this._FileName))
-            {                
+            {
                 while (!sr.EndOfStream)
                 {
-                     data = sr.ReadToEnd();
+                    csvLines.Add(sr.ReadLine());
                 }
             }
-            return data;
+            return csvLines;
         }
     }
 }

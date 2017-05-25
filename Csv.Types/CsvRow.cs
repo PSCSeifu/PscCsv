@@ -22,7 +22,7 @@ namespace Csv.Types
             _Items.Add(item);
         }
 
-        internal string ToLine()
+        public string ToLine()
         {
             var line = "";
             foreach (var item in this._Items)
@@ -37,7 +37,7 @@ namespace Csv.Types
 
         #region "  Read "
         
-        public string GetItem(int index)
+        public string GetCol(int index)
         {
             if (_Items.Count > index)
                 return _Items[index];

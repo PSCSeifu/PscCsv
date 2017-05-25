@@ -24,30 +24,18 @@ namespace Csv.Client
 
             CsvReader reader = CsvReader.Create(provider);
 
-            reader.Read();           
+            reader.Read();
 
-
-            string headerLine = reader.GetLine(0);
-
-            CsvRow headerRow = reader.NewRow(headerLine);
-
-            var header1 = headerRow.GetItem(0);
-            var header2 = headerRow.GetItem(1);
-            var header3 = headerRow.GetItem(2);
-
-            Console.WriteLine($"{header1} , {header2}, {header3}");
-
-            for (int i = 1; i < 10; i++)
+           
+            foreach (var row in reader.GetRows())
             {
-               
-                string dataline = reader.GetLine(i);
-                CsvRow dataRow = reader.NewRow(dataline);
-
-                var item1 = dataRow.GetItem(0);
-                var item2 = dataRow.GetItem(1);
-                var item3 = dataRow.GetItem(2);
-                Console.WriteLine($"{item1} , {item2}, {item3}");
+                //row.GetCol(0)
+                var data = row.GetCol("Header1");
+                Console.WriteLine($" -Header1 - {data.GetHeader()}");
+                Console.WriteLine($" -Value   - {data.GetValue()}");
+                Console.WriteLine($" -RowLine - {row.ToLine()}");                
             }
+            
         }
 
     }
