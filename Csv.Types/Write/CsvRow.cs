@@ -19,11 +19,11 @@ namespace Csv.Types.Write
         {
             StringBuilder line = new StringBuilder ();
             foreach (var item in this._Cols)
-            {               
-                line.Append( $"{item},");
+            {
+                if (line.Length != 0) line.Append(',');
+                line.Append( $"{item}");
             }
-            return line.ToString()
-                        .Substring(0, line.Length - 1);
+            return line.ToString();
         }
 
         public void AddCol(string data)
