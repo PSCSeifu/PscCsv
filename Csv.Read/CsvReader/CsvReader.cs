@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Csv.Read.CsvReader
 {
-    public class CsvReader 
+    public class CsvReader : ICsvReader
     {
         private readonly List<CsvRow> _Rows;
         private readonly ICsvInputProvider _Provider;

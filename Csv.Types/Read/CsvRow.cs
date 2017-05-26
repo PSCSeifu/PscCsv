@@ -35,6 +35,7 @@ namespace Csv.Types.Read
         {
             var values = valueLine.Split(',').ToList();
             var headers = headerLine.Split(',').ToList();
+
             for (int i = 0; i < values.Count; i++)
             {
                 _Cols.Add(new CsvCol(headers[i], values[i]));

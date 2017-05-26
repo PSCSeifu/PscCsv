@@ -1,14 +1,9 @@
 ﻿using Csv.IO.CsvRead;
 using Csv.IO.CsvWrite;
 using Csv.Read.CsvReader;
-using Csv.Types;
 using Csv.Types.Write;
 using Csv.Write.CsvWriter;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Csv.Client
 {

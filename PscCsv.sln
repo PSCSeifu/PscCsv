@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csv.Types", "Csv.Types\Csv.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csv.Read.Tests", "Csv.Read.Tests\Csv.Read.Tests.csproj", "{9AB6F162-2015-427E-9C5D-856C3552EA5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csv.WriteTests", "Csv.WriteTests\Csv.WriteTests.csproj", "{9F25E72C-C0C4-4A3A-AB10-69A9E1CD0187}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{9AB6F162-2015-427E-9C5D-856C3552EA5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB6F162-2015-427E-9C5D-856C3552EA5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AB6F162-2015-427E-9C5D-856C3552EA5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F25E72C-C0C4-4A3A-AB10-69A9E1CD0187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F25E72C-C0C4-4A3A-AB10-69A9E1CD0187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F25E72C-C0C4-4A3A-AB10-69A9E1CD0187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F25E72C-C0C4-4A3A-AB10-69A9E1CD0187}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +75,6 @@ Global
 		{0B12A776-C599-48C8-9554-1E654D16C3ED} = {04DF7528-8F03-4537-BA28-7A03CDE33183}
 		{B5A18015-CF6C-4941-BE0A-D7959C9678B6} = {04DF7528-8F03-4537-BA28-7A03CDE33183}
 		{9AB6F162-2015-427E-9C5D-856C3552EA5D} = {627A8204-8707-4048-AB06-E1B4B8937F95}
+		{9F25E72C-C0C4-4A3A-AB10-69A9E1CD0187} = {627A8204-8707-4048-AB06-E1B4B8937F95}
 	EndGlobalSection
 EndGlobal

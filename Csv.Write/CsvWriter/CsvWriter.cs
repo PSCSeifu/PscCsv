@@ -8,7 +8,7 @@ using Csv.Types.Write;
 
 namespace Csv.Write.CsvWriter
 {
-    public class CsvWriter
+    public class CsvWriter : ICsvWriter
     {
         private readonly  ICsvOutputProvider _Provider;
         private readonly List<CsvRow> _Rows;
