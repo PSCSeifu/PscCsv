@@ -28,8 +28,8 @@ namespace Csv.Read.Tests.CsvReader
 
         #endregion
 
-        [Fact]
-        public void CsvReadMethod_3CsvLinesProvided_Returns3CsvRows()
+        //[Fact]
+        public void CsvReadMethod_CsvLinesProvided_Returns3CsvRows()
         {
             //Arrange        
             //mockProvider.Setup(x => x.Read()).Returns(data);

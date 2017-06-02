@@ -9,18 +9,18 @@ namespace Csv.Types.Read
     public class CsvCol
     {
         private readonly string _Header;
-        private readonly string _ColValue;
+        private readonly string _Data;
 
         public CsvCol()
         {
             this._Header = "";
-            this._ColValue = "";
+            this._Data = "";
         }
 
         public CsvCol(string header, string value)
         {
             this._Header = header;
-            this._ColValue =value;
+            this._Data = value;
         }
 
         public string GetHeader()
@@ -31,7 +31,7 @@ namespace Csv.Types.Read
 
         public string GetValue()
         {
-            return this._ColValue;
+            return this._Data;
         }
 
         

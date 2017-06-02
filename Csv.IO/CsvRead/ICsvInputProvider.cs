@@ -9,5 +9,6 @@ namespace Csv.IO.CsvRead
     public interface ICsvInputProvider
     {
         List<string> Read();
+        List<string> Read(string endOfLine);
     }
 }

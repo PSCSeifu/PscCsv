@@ -35,16 +35,24 @@ namespace Csv.Read.CsvReader
         }
 
         public void Read()
+            => Read("");
+
+        public void Read(string endOfLine)
         {
-           List<string> csvLines =  this._Provider.Read();
+            List<string> csvLines = new List<string>();
+            if(string.IsNullOrEmpty(endOfLine))
+                this._Provider.Read(endOfLine);
+            else
+                this._Provider.Read();
+
             var header = csvLines[0];
-            if(csvLines != null)
+            if (csvLines != null)
             {
                 foreach (var line in csvLines)
                 {
-                    _Rows.Add(NewRow(line,header));
+                    _Rows.Add(NewRow(line, header));
                 }
-            }            
+            }
         }
 
         private CsvRow NewRow(string line, string header)

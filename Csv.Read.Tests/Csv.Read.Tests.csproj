@@ -68,7 +68,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvColTests.cs" />
     <Compile Include="CsvReader\CsvReaderTests.cs" />
+    <Compile Include="CsvRowTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

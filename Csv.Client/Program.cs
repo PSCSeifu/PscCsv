@@ -11,8 +11,8 @@ namespace Csv.Client
     {
         static void Main(string[] args)
         {
-            //Read();
-            Write();
+            Read();
+            //Write();
             Console.WriteLine("--Done--");
             Console.ReadLine();
         }

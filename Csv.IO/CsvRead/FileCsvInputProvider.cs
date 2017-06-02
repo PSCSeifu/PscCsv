@@ -29,5 +29,22 @@ namespace Csv.IO.CsvRead
             }
             return csvLines;
         }
+
+        public List<string> Read(string endOfLine)
+        {
+            List<string> csvLines = new List<string>();
+            string text = "";
+            string[] eol = new string[1];
+            eol[0] = endOfLine;
+
+            using (StreamReader sr = new StreamReader(this._FileName))
+            {
+                text = sr.ReadToEnd();
+            }
+
+            csvLines = text.Split(eol, StringSplitOptions.None).ToList();
+
+            return csvLines;
+        }
     }
 }

@@ -41,6 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Read\IReadValidator.cs" />
+    <Compile Include="Write\IWriteValidator.cs" />
+    <Compile Include="Write\ValidateFormat.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Csv.Types\Csv.Types.csproj">
+      <Project>{B5A18015-CF6C-4941-BE0A-D7959C9678B6}</Project>
+      <Name>Csv.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

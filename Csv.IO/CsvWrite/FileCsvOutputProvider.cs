@@ -18,14 +18,24 @@ namespace Csv.IO.CsvWrite
         }
 
         public void Write(IReadOnlyList<CsvRow> rows)
+            => Write(rows, ',', char.MinValue, "");
+
+        public void Write(IReadOnlyList<CsvRow> rows, char separator)
+            => Write(rows, separator, char.MinValue, "");
+
+        public void Write(IReadOnlyList<CsvRow> rows, char separator, char quote)
+           => Write(rows, separator, quote,"");
+
+        public void Write(IReadOnlyList<CsvRow> rows, char separator, char quote, string endofLine)
         {
             using (StreamWriter sw = new StreamWriter(_FileName))
             {
                 foreach (var row in rows)
                 {
-                    sw.WriteLine(row.ToLine());
+                    sw.WriteLine(row.ToLine(separator, quote, endofLine));
                 }
             }
         }
+
     }
 }
