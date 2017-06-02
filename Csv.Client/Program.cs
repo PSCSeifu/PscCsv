@@ -19,7 +19,7 @@ namespace Csv.Client
 
         private static void Read()
         {
-           var provider = new FileCsvInputProvider(@"C:\Projects\PSC\Data0.csv");
+           var provider = new FileCsvInputProvider(@"C:\Projects\PSC\Datax.csv");
 
             CsvReader reader = CsvReader.Create(provider);
 
