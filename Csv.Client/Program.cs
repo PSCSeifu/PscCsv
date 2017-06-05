@@ -11,7 +11,9 @@ namespace Csv.Client
     {
         static void Main(string[] args)
         {
-            Read();
+            DeQuoteUnHappyPath();
+            //DeQuote();
+            //Read();
             //Write();
             Console.WriteLine("--Done--");
             Console.ReadLine();
@@ -59,6 +61,37 @@ namespace Csv.Client
             writer.Write();
         }
 
+        private static void DeQuote()
+        {
+            var valueLine = "'data1','data2','data2'";
+            var headerLine = "'header1','header2','header3'";
+
+           Csv.Types.Read.CsvRow row = new Csv.Types.Read.CsvRow();
+            row.NewRow(valueLine, headerLine, ',','\'');
+
+            var resutlHeader = row.GetCol("header1").GetHeader();
+            var resultValue = row.GetCol("header1").GetValue();
+
+            Console.WriteLine($"header => {resutlHeader}");
+            Console.WriteLine($"value => {resultValue}");
+        }
+
+        private static void DeQuoteUnHappyPath()
+        {
+            var valueLine = "*data1*,*data2*,*data2*";
+           var  headerLine = "*header1*,*header2*,*header3*";
+
+            Csv.Types.Read.CsvRow row = new Csv.Types.Read.CsvRow();
+            row.NewRow(valueLine, headerLine, ',', '\'');
+
+            var resutlHeader = row.GetCol("*header1*").GetHeader();
+            var resultValue = row.GetCol("*header1*").GetValue();
+
+            Console.WriteLine($"header => {resutlHeader}");
+            Console.WriteLine($"value => {resultValue}");
+        }
+
        
     }
 }
+

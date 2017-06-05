@@ -71,7 +71,7 @@ namespace Csv.Read.Tests
             //Act
             row.NewRow(valueLine, headerLine);
             var resutl1 = row.GetCol("header3").GetHeader();
-            var result2= row.GetCol("header4").GetValue();
+            var result2= row.GetCol("header3").GetValue();
 
             //Assert
             resutl1.Should().Be(expectedHeader);
@@ -79,35 +79,102 @@ namespace Csv.Read.Tests
         }
 
         [Fact]
-        public void NewRow_FewerHeadersThanValues_ExpectedResult()
+        public void NewRow_FewerHeadersThanValues_ThrowsArgumentException()
         {
             //Arrange
             valueLine = "data1,data2,data3,data4";
             headerLine = "header1,header2";
-            var expectedValue = "data3";
-
             //Act
-            row.NewRow(valueLine, headerLine);
-            var resutl1 = row.GetCol("").GetHeader();
-            var result2 = row.GetCol("").GetValue();
+            Action act = () => row.NewRow(valueLine, headerLine);
 
             //Assert
-            resutl1.Should().Be("");
-            result2.Should().Be(expectedValue);
+            act.ShouldThrow<ArgumentException>();                         
         }
 
         #endregion
 
         #region " Separator Char"
 
+        [Fact]
+        public void NewRow_SeparatorProvided_StringSplitCorrectly()
+        {
+            //Arrange
+            valueLine = "data1;data2;data2";
+            headerLine = "header1;header2;header3";           
+            var expectedValue = "data1";
+
+            //Act
+            row.NewRow(valueLine, headerLine,';');
+            var resultValue = row.GetCol("header1").GetValue();
+
+            //Assert          
+            resultValue.Should().Be(expectedValue);
+        }
+
+        [Fact]
+        public void NewRow_IncorrectSeparator_StringNotSplit()
+        {
+            //Arrange
+            valueLine = "data1,data2,data2";
+            headerLine = "header1,header2,header3";
+
+            var expectedHeader = "";
+            var expectedValue = "";
+
+            //Act
+            row.NewRow(valueLine, headerLine,';');
+            var resutlHeader = row.GetCol("header1").GetHeader();
+            var resultValue = row.GetCol("header1").GetValue();
+
+            //Assert
+            resutlHeader.Should().Be(expectedHeader);
+            resultValue.Should().Be(expectedValue);
+
+        }
+
         #endregion
 
         #region " Quote Char"
 
-        #endregion
+        [Fact]
+        public void NewRow_CorrectQuoteCharProvided_QuotesRemoved_FromRowValues()
+        {
+            //Arrange
+            valueLine = "'data1','data2','data2'";
+            headerLine = "'header1','header2','header3'";
+            var expectedHeader = "header1";
+            var expectedValue = "data1";
 
-        #region " End of Line String"
+            //Act           
+            row.NewRow(valueLine, headerLine,',','\'');
+            var resutlHeader = row.GetCol("header1").GetHeader();
+            var resultValue = row.GetCol("header1").GetValue();
+
+            //Assert
+            resutlHeader.Should().Be(expectedHeader);
+            resultValue.Should().Be(expectedValue);
+        }
+
+        [Fact]
+        public void NewRow_InCorrectQuoteCharProvided_QuoutesNotRemoved_FromRowValues()
+        {
+            //Arrange
+            valueLine = "*data1*,*data2*,*data2*";
+            headerLine = "*header1*,*header2*,*header3*";
+            var expectedHeader = "*header1*";
+            var expectedValue = "*data1*";
+
+            //Act           
+            row.NewRow(valueLine, headerLine, ',', ';');
+            var resutlHeader = row.GetCol("*header1*").GetHeader();
+            var resultValue = row.GetCol("*header1*").GetValue();
+
+            //Assert
+            resutlHeader.Should().Be(expectedHeader);
+            resultValue.Should().Be(expectedValue);
+        }
 
         #endregion
+        
     }
 }

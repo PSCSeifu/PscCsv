@@ -45,11 +45,12 @@ namespace Csv.Types.Read
                 return new CsvRow();
             else
             {
-                var values = valueLine.Split(separator).ToList();
-                var headers = headerLine.Split(separator).ToList();
-
-                if ((int)quote != 0 && values != null) values.ForEach(i => DeQuote(i, quote));
-                if ((int)quote != 0 && headers != null) headers.ForEach(i => DeQuote(i, quote));
+                var rawValues = valueLine.Split(separator).ToList();
+                var rawHeaders = headerLine.Split(separator).ToList();
+               
+                var headers = ((int)quote != 0) ?  RemoveQuote(rawHeaders, quote)  : rawHeaders;
+                var values = ((int)quote != 0) ? RemoveQuote(rawValues, quote) : rawValues;
+                                
 
                 if (values.Count == headers.Count)
                 {
@@ -57,12 +58,22 @@ namespace Csv.Types.Read
                     { _Cols.Add(new CsvCol(headers[i], values[i])); }
                     
                     return this;
+                }               
+                else if (values.Count < headers.Count)
+                {
+                    for (int i = 0; i < headers.Count; i++)
+                    { _Cols.Add(new CsvCol(
+                                headers[i],
+                                (i >= values.Count()) ? "" : values[i]
+                            ));
+                    }
+                    return this;
                 }
                 else
                 {
-                    throw new Exception("Header and Value counts are not equal");
+                    throw new ArgumentException("More data values than headers");
                 }
-                //else if (values.Count > headers.Count)
+                //else
                 //{
                 //    for (int i = 0; i < values.Count; i++)
                 //        _Cols.Add(new CsvCol(
@@ -70,38 +81,43 @@ namespace Csv.Types.Read
                 //                , values[i]
                 //            ));
                 //}
-                //else
-                //{
-                //    for (int i = 0; i < headers.Count; i++)
-                //        _Cols.Add(new CsvCol(
-                //                headers[i],
-                //                (i >= values.Count()) ? "" : values[i]
-                //            ));
-                //}
-
-                
             }
         }
 
-        private void DeQuote(string value, char quote)
+        private List<string> RemoveQuote(List<string> list, char quote)
         {
-
-            if (!string.IsNullOrEmpty(value))
+            if (list == null || list.Count == 0)
+                return list;
+            else
             {
-                if (value.Length == 1 && (int)value[0] == (int)quote)
-                    value = "";
-                if (value.Length == 2)
+                List<string> dequotedList = new List<string>();
+                foreach (var value in list)
                 {
-                    if ((int)value[0] == (int)quote && (int)value[1] == (int)quote)
-                        value = "";
+                    var dequotedItem = "";
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        if (value.Length > 3)
+                        {
+                            dequotedItem = ((int)value.First() == (int)quote) ?
+                                dequotedItem = value.Substring(1, value.Length - 1) :
+                                dequotedItem = value;
+
+                            dequotedItem = ((int)value.Last() == (int)quote) ?
+                                dequotedItem.Substring(0, value.Length - 2) :
+                                dequotedItem = value;
+                        }
+                        else
+                        {
+                            if (value.Length == 1 && (int)value[0] == (int)quote)
+                                dequotedItem = "";
+                            if (value.Length == 2)
+                                dequotedItem = ((int)value[0] == (int)quote && (int)value[1] == (int)quote) ?
+                                     "" : value;
+                        }
+                    }
+                    dequotedList.Add(dequotedItem);
                 }
-                else
-                {
-                    if ((int)value.First() == (int)quote)
-                        value = value.Substring(1, value.Length - 1);
-                    if ((int)value.Last() == (int)quote)
-                        value = value.Substring(0, value.Length - 2);
-                }
+                return dequotedList;
             }
         }
 
