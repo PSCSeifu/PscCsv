@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9AB6F162-2015-427E-9C5D-856C3552EA5D}</ProjectGuid>
+    <ProjectGuid>{02022175-CEC1-4D4D-B143-56274AFCF4DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Csv.Read.Tests</RootNamespace>
-    <AssemblyName>Csv.Read.Tests</AssemblyName>
+    <RootNamespace>Csv.ReaderTests</RootNamespace>
+    <AssemblyName>Csv.ReaderTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -43,9 +43,6 @@
     <Reference Include="Moq, Version=4.5.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.5.0\lib\net45\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -70,9 +67,12 @@
   <ItemGroup>
     <Compile Include="CsvColTests.cs" />
     <Compile Include="CsvReaderTests.cs" />
-    <Compile Include="CsvReader\CsvReaderTests.cs" />
     <Compile Include="CsvRowTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="xunit.runner.json" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.1.0.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
@@ -83,20 +83,16 @@
       <Name>Csv.IO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Csv.Read\Csv.Read.csproj">
-      <Project>{b78af9f1-b9ef-490b-862c-f4c8e7db5b0a}</Project>
+      <Project>{B78AF9F1-B9EF-490B-862C-F4C8E7DB5B0A}</Project>
       <Name>Csv.Read</Name>
     </ProjectReference>
     <ProjectReference Include="..\Csv.Types\Csv.Types.csproj">
-      <Project>{B5A18015-CF6C-4941-BE0A-D7959C9678B6}</Project>
+      <Project>{b5a18015-cf6c-4941-be0a-d7959c9678b6}</Project>
       <Name>Csv.Types</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="xunit.runner.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

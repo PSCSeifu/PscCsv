@@ -11,9 +11,9 @@ namespace Csv.Client
     {
         static void Main(string[] args)
         {
-            DeQuoteUnHappyPath();
-            //DeQuote();
-            //Read();
+            //DeQuoteUnHappyPath();
+            ///DeQuote();
+            Read();
             //Write();
             Console.WriteLine("--Done--");
             Console.ReadLine();

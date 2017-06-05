@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Csv.Read.Tests
+namespace Csv.ReaderTests
 {
     public class CsvColTests
     {
-        //[Fact]
+        [Fact]
         public void GetHeader_DefaultConstructor_ReturnsEmptyString()
         {
             //Arrange
@@ -25,7 +25,7 @@ namespace Csv.Read.Tests
             result.Should().Be(expected);
         }
 
-        //[Fact]
+        [Fact]
         public void GetHeader_OverloadConstructor_ReturnsProvided_HeaderString()
         {
             //Arrange
@@ -39,7 +39,7 @@ namespace Csv.Read.Tests
             result.Should().Be(expected);
         }
 
-        //[Fact]
+        [Fact]
         public void GetValue_OverloadConstructor_ReturnsProvided_ValueString()
         {
             //Arrange

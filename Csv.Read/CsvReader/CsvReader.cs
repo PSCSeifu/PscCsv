@@ -35,19 +35,21 @@ namespace Csv.Read.CsvReader
         }
 
         public void Read()
-            => Read("");
+            => Read("","");
 
-        public void Read(string endOfLine)
+        public void Read(string header)
+            => Read(header, "");
+
+        public void Read(string header, string endOfLine)
         {
-            List<string> csvLines = new List<string>();
-            if(string.IsNullOrEmpty(endOfLine))
+            List<string> csvLines =  (string.IsNullOrEmpty(endOfLine)) ?
+                this._Provider.Read() :
                 this._Provider.Read(endOfLine);
-            else
-                this._Provider.Read();
 
-            var header = csvLines[0];
             if (csvLines != null)
             {
+                if (string.IsNullOrEmpty(header))
+                     header = csvLines[0];
                 foreach (var line in csvLines)
                 {
                     _Rows.Add(NewRow(line, header));

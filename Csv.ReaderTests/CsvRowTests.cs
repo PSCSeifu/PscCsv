@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Csv.Read.Tests
+namespace Csv.ReaderTests
 {
     public class CsvRowTests
     {
@@ -20,7 +20,7 @@ namespace Csv.Read.Tests
 
         #region " Default  "
 
-        //[Fact]
+        [Fact]
         public void NewRow_DefaultCondition_ColsCreated_CommaSeprator_NoQuotesRemoved()
         {
             //Arrange
@@ -40,7 +40,7 @@ namespace Csv.Read.Tests
             resultValue.Should().Be(expectedValue);
         }
 
-        //[Fact]
+        [Fact]
         public void NewRow_EmptyParameters_ReturnsEmpty_StringValues()
         {
             //Arrange
@@ -59,7 +59,7 @@ namespace Csv.Read.Tests
             resultValue.Should().Be(expectedValue);
         }
 
-        //[Fact]
+        [Fact]
         public void NewRow_FewerValuesThanHeaders_OrphanedHeaders_HaveEmptyValues()
         {
             //Arrange
@@ -78,7 +78,7 @@ namespace Csv.Read.Tests
             result2.Should().Be(expectedValue);
         }
 
-        //[Fact]
+        [Fact]
         public void NewRow_FewerHeadersThanValues_ThrowsArgumentException()
         {
             //Arrange
@@ -95,7 +95,7 @@ namespace Csv.Read.Tests
 
         #region " Separator Char"
 
-        //[Fact]
+        [Fact]
         public void NewRow_SeparatorProvided_StringSplitCorrectly()
         {
             //Arrange
@@ -111,7 +111,7 @@ namespace Csv.Read.Tests
             resultValue.Should().Be(expectedValue);
         }
 
-        //[Fact]
+        [Fact]
         public void NewRow_IncorrectSeparator_StringNotSplit()
         {
             //Arrange
@@ -136,7 +136,7 @@ namespace Csv.Read.Tests
 
         #region " Quote Char"
 
-        //[Fact]
+        [Fact]
         public void NewRow_CorrectQuoteCharProvided_QuotesRemoved_FromRowValues()
         {
             //Arrange
@@ -155,7 +155,7 @@ namespace Csv.Read.Tests
             resultValue.Should().Be(expectedValue);
         }
 
-        //[Fact]
+        [Fact]
         public void NewRow_InCorrectQuoteCharProvided_QuoutesNotRemoved_FromRowValues()
         {
             //Arrange
