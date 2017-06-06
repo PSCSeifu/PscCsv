@@ -13,7 +13,8 @@ namespace Csv.Client
         {
             //DeQuoteUnHappyPath();
             ///DeQuote();
-            Read();
+            //Read();
+            ReadWithEndOfLine();
             //Write();
             Console.WriteLine("--Done--");
             Console.ReadLine();
@@ -37,6 +38,19 @@ namespace Csv.Client
                 Console.WriteLine($" -RowLine - {row.ToLine()}");                
             }
             
+        }
+
+        private static void ReadWithEndOfLine()
+        {
+            var provider = new FileCsvInputProvider(@"C:\Projects\PSC\Data_EndOfLine.csv");
+            CsvReader reader = CsvReader.Create(provider);
+            reader.Read("","~@");
+
+            foreach (var row in reader.GetRows())
+            {
+                var line = row.GetCol("Header4");
+                Console.WriteLine($" - Header4 val - {line.GetValue()}");
+            }
         }
 
         public static void Write()

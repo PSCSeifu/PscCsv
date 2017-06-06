@@ -50,16 +50,8 @@ namespace Csv.ReaderTests
             //Arrange
             var mock = GetMockedValues();
             var csvReader = CsvReader.Create(mock.provider.Object);
-
-            var row = new CsvRow();         
-            List<CsvRow> expected = new List<CsvRow>()
-            {
-            row.NewRow("header1,header2,header3", "header1,header2,header3"),
-            row.NewRow("data1,data2,data3", "header1,header2,header3")
-            };
-
-            //Act
             
+            //Act            
             csvReader.Read();
             var result = csvReader.GetRows();
 
@@ -71,6 +63,28 @@ namespace Csv.ReaderTests
             result[1].GetCol("header2").GetValue().Should().Be("data2");
             result[1].GetCol("header3").GetValue().Should().Be("data3");           
         }
+
+        [Fact]
+        public void Read_HeaderProvided_UsesProvidedHeader_ToCreateCsvRows()
+        {
+            //Arrange
+            var mock = GetMockedValues();
+            var csvReader = CsvReader.Create(mock.provider.Object);
+            
+            //Act
+            csvReader.Read("Alt1,Alt2,Alt3");
+            var result = csvReader.GetRows();
+
+            //Assert
+            result[0].GetCol("Alt1").GetValue().Should().Be("header1");
+            result[0].GetCol("Alt2").GetValue().Should().Be("header2");
+        
+
+            result[1].GetCol("header1").GetValue().Should().Be("");
+            result[1].GetCol("Alt2").GetValue().Should().Be("data2");
+            result[1].GetCol("Alt3").GetValue().Should().Be("data3");
+        }
+               
     }
 }
 
