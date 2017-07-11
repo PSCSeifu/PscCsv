@@ -28,12 +28,19 @@ namespace Csv.IO.CsvWrite
 
         public void Write(IReadOnlyList<CsvRow> rows, char separator, char quote, string endofLine)
         {
-            using (StreamWriter sw = new StreamWriter(_FileName))
+            try
             {
-                foreach (var row in rows)
+                using (StreamWriter sw = new StreamWriter(_FileName))
                 {
-                    sw.WriteLine(row.ToLine(separator, quote, endofLine));
+                    foreach (var row in rows)
+                    {
+                        sw.WriteLine(row.ToLine(separator, quote, endofLine));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                
             }
         }
 

@@ -19,32 +19,46 @@ namespace Csv.IO.CsvRead
 
         public List<string> Read()
         {
-            List<string> csvLines = new List<string>();
-            using (StreamReader sr = new StreamReader(this._FileName))
+            try
             {
-                while (!sr.EndOfStream)
+                List<string> csvLines = new List<string>();
+                using (StreamReader sr = new StreamReader(this._FileName))
                 {
-                    csvLines.Add(sr.ReadLine());
+                    while (!sr.EndOfStream)
+                    {
+                        csvLines.Add(sr.ReadLine());
+                    }
                 }
+                return csvLines;
             }
-            return csvLines;
+            catch (Exception)
+            {
+                return new List<string>();
+            }
+          
         }
 
         public List<string> Read(string endOfLine)
-        {
-            List<string> csvLines = new List<string>();
-            string text = "";
-            string[] eol = new string[1];
-            eol[0] = endOfLine;
-
-            using (StreamReader sr = new StreamReader(this._FileName))
+        {           
+            try
             {
-                text = sr.ReadToEnd();
+                List<string> csvLines = new List<string>();
+                string text = "";
+                string[] eol = new string[1];
+                eol[0] = endOfLine;
+
+                using (StreamReader sr = new StreamReader(this._FileName))
+                {
+                    text = sr.ReadToEnd();
+                }
+
+                csvLines = text.Split(eol, StringSplitOptions.None).ToList();
+                return csvLines;
             }
-
-            csvLines = text.Split(eol, StringSplitOptions.None).ToList();
-
-            return csvLines;
+            catch (Exception)
+            {
+                return new List<string>();
+            }
         }
     }
 }
